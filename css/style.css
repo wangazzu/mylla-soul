@@ -83,6 +83,8 @@ section .card,section form,section details{text-align:left}
 .d2{width:18px;height:18px;background:var(--roxo);border-radius:50%;bottom:22%;left:10%;animation-delay:1s}
 .d3{top:16%;right:8%;font-size:2rem;animation-delay:.5s}
 .d4{bottom:16%;right:6%;width:44px;height:14px;border:5px solid var(--laranja);border-radius:100px;transform:rotate(-14deg);animation-delay:1.6s}
+.d5{top:55%;left:3%;font-size:2.2rem;color:var(--roxo);animation-delay:.8s;animation-duration:6s}
+.d6{top:38%;right:4%;font-size:1.7rem;color:var(--coral);animation-delay:2.1s;animation-duration:4.2s}
 @keyframes flutuar{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-14px) rotate(6deg)}}
 /* Onda divisória do hero */
 /* Sobre */
@@ -209,6 +211,8 @@ footer h2{color:#fff}
 /* Mobile: doodles longe do texto */
 @media(max-width:799px){
   .hero-cta{margin-top:14px}
+  .d5{top:auto;bottom:28%;left:2%;font-size:1.6rem}
+  .d6{display:none}
   .d1{top:auto;bottom:10%;left:4%;width:24px;height:24px}
   .d2{bottom:8%;left:auto;right:8%}
   .d3{display:none}
