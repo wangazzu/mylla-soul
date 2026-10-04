@@ -186,8 +186,7 @@ document.addEventListener("DOMContentLoaded", () => {
       btn.className = "hamb"; btn.type = "button";
       btn.setAttribute("aria-label", "Abrir menu"); btn.setAttribute("aria-expanded", "false");
       btn.textContent = "☰";
-      const ref = nav.querySelector(".nav-icons");
-      nav.insertBefore(btn, ref || null);
+      nav.append(btn);
       const menu = document.createElement("nav");
       menu.className = "mobile-menu"; menu.setAttribute("aria-label", "Menu");
       menu.innerHTML = links.innerHTML;
