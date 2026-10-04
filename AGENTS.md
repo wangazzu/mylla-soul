@@ -5,7 +5,7 @@ Páginas: `index.html` (one-page) + `press-kit.html`, `blog.html`, `blog/*.html`
 
 ## Publicar
 
-Sem build: cada `push` na `main` gera redeploy automático no Vercel (~1 min).
+Sem build: cada `push` na `main` republica automaticamente (~1 min) via GitHub Pages (branch `main`, pasta `/`).
 
 ```
 git add -A && git commit -m "..." && git push
