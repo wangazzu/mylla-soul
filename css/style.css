@@ -92,8 +92,9 @@ section .card,section form,section details{text-align:left}
 .sobre-card>.sub{grid-column:1/-1;margin-bottom:8px}
 .sobre-foto{border-radius:var(--radius);width:100%;max-width:420px;height:auto;display:block;margin:0 auto;box-shadow:var(--shadow)}
 @media(min-width:800px){
-  .sobre-card{grid-template-columns:minmax(280px,380px) 1fr}
-  .sobre-foto{margin:0}
+  .sobre-card{grid-template-columns:1fr minmax(280px,380px)}
+  .sobre-card>div:last-child{order:1}
+  .sobre-foto{margin:0;order:2;justify-self:end}
 }
 /* Serviços = cards pastel */
 .grid3{display:grid;gap:18px}
