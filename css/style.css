@@ -87,13 +87,12 @@ section .card,section form,section details{text-align:left}
 /* Onda divisória do hero */
 /* Sobre */
 .sobre-card{display:grid;gap:20px;align-items:center}
-.sobre-card>.badge{grid-column:1/-1;justify-self:center;margin-bottom:0}
-.sobre-card>h2{grid-column:1/-1;text-align:center;margin-bottom:0}
-.sobre-card>.sub{grid-column:1/-1;margin-bottom:8px}
+.sobre-texto h2{text-align:left}
+.sobre-texto .sub{text-align:left;margin-left:0;margin-right:0}
 .sobre-foto{border-radius:var(--radius);width:100%;max-width:420px;height:auto;display:block;margin:0 auto;box-shadow:var(--shadow)}
 @media(min-width:800px){
   .sobre-card{grid-template-columns:1fr minmax(280px,380px)}
-  .sobre-card>div:last-child{order:1}
+  .sobre-card>.sobre-texto{order:1}
   .sobre-foto{margin:0;order:2;justify-self:end}
 }
 /* Serviços = cards pastel */
