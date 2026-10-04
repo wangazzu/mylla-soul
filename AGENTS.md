@@ -1,6 +1,6 @@
 # Mylla Soul — site estático (HTML/CSS/JS puro, sem build)
 
-Site da cantora Mylla Soul no ar em https://mylla-soul.vercel.app (repo `wangazzu/mylla-soul`, branch `main`).
+Site da cantora Mylla Soul no ar em https://wangazzu.github.io/mylla-soul (repo `wangazzu/mylla-soul`, branch `main`).
 Páginas: `index.html` (one-page) + `press-kit.html`, `blog.html`, `blog/*.html`, `qrcode.html`. CSS/JS compartilhados em `css/style.css`, `js/`.
 
 ## Publicar

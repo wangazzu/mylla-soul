@@ -10,7 +10,7 @@ window.SITE_CONFIG = {
   youtube: "https://www.youtube.com/@Mylla_Sousa",
   email: "contato@myllasoul.com.br", // TODO: confirmar
   cidade: "Brasília/DF",
-  siteUrl: "https://mylla-soul.vercel.app",
+  siteUrl: "https://wangazzu.github.io/mylla-soul",
   nome: "Mylla Soul",
   tagline: "Música, alegria & vida para pequenos e grandes"
 };
