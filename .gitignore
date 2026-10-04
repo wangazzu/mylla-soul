@@ -6,3 +6,5 @@ assets/fotos/originais/
 Thumbs.db
 .DS_Store
 Desktop.ini
+# Dependencies
+node_modules/

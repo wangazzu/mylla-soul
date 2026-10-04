@@ -1,0 +1,14 @@
+{
+  "name": "mylla-soul",
+  "version": "1.0.0",
+  "description": "Mylla Soul - Cantora e Musicalização Infantil em Brasília/DF",
+  "scripts": {
+    "test": "echo \"No tests configured\" && exit 0"
+  },
+  "keywords": ["music", "website"],
+  "author": "Mylla Soul",
+  "license": "MIT",
+  "dependencies": {
+    "@vercel/speed-insights": "^1.0.14"
+  }
+}
