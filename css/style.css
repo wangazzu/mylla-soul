@@ -87,8 +87,8 @@ section .card,section form,section details{text-align:left}
 /* Onda divisória do hero */
 /* Sobre */
 .sobre-card{display:grid;gap:20px;align-items:center}
-.sobre-texto h2{text-align:left}
-.sobre-texto .sub{text-align:left;margin-left:0;margin-right:0}
+.sobre-texto{text-align:center}
+.sobre-texto .sub{margin-left:auto;margin-right:auto}
 .sobre-texto>.badge{display:table;margin-left:auto;margin-right:auto}
 .sobre-foto{border-radius:var(--radius);width:100%;max-width:420px;height:auto;display:block;margin:0 auto;box-shadow:var(--shadow)}
 @media(min-width:800px){
