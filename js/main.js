@@ -35,6 +35,13 @@ document.addEventListener("DOMContentLoaded", () => {
       if (status) { status.textContent = "Confira os campos destacados antes de enviar."; status.className = "form-status erro"; }
       return;
     }
+    const dataEl = document.getElementById("f-data");
+    if (dataEl && !dataEl.value) {
+      if (status) { status.textContent = "Escolha a data do evento no calendário."; status.className = "form-status erro"; }
+      const dataBtn = document.getElementById("f-data-btn");
+      if (dataBtn) dataBtn.click();
+      return;
+    }
     if (btn) { btn.disabled = true; btn.textContent = "Abrindo WhatsApp…"; }
     if (status) { status.textContent = "Montando seu orçamento…"; status.className = "form-status"; }
     const f = new FormData(form);
@@ -240,6 +247,61 @@ document.addEventListener("DOMContentLoaded", () => {
       } else if (e.key === "Escape") { close(); }
     });
     document.addEventListener("click", e => { if (!btn.contains(e.target) && !list.contains(e.target)) close(); });
+  })();
+
+  // Calendário próprio para a data (datas passadas bloqueadas)
+  (function () {
+    const hidden = document.getElementById("f-data");
+    const btn = document.getElementById("f-data-btn");
+    const cal = btn ? btn.parentElement.querySelector(".cal") : null;
+    if (!hidden || !btn || !cal) return;
+    const days = cal.querySelector(".cal-days");
+    const title = cal.querySelector(".cal-head strong");
+    const label = btn.querySelector("span");
+    const MESES = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"];
+    const hoje = new Date(); hoje.setHours(0, 0, 0, 0);
+    const maxM = hoje.getMonth() + 24;
+    let viewY = hoje.getFullYear(), viewM = hoje.getMonth();
+    const p2 = n => String(n).padStart(2, "0");
+    function render() {
+      title.textContent = MESES[viewM] + " " + viewY;
+      days.innerHTML = "";
+      const ini = new Date(viewY, viewM, 1).getDay();
+      const total = new Date(viewY, viewM + 1, 0).getDate();
+      for (let i = 0; i < ini; i++) days.append(document.createElement("span"));
+      for (let d = 1; d <= total; d++) {
+        const b = document.createElement("button");
+        b.type = "button"; b.textContent = d;
+        const data = new Date(viewY, viewM, d);
+        const passado = data < hoje;
+        b.disabled = passado;
+        if (data.getTime() === hoje.getTime()) b.classList.add("hoje");
+        const iso = viewY + "-" + p2(viewM + 1) + "-" + p2(d);
+        b.setAttribute("aria-pressed", String(hidden.value === iso));
+        b.setAttribute("aria-label", p2(d) + "/" + p2(viewM + 1) + "/" + viewY);
+        if (!passado) b.addEventListener("click", () => {
+          hidden.value = iso;
+          label.textContent = p2(d) + "/" + p2(viewM + 1) + "/" + viewY;
+          render(); close(); btn.focus();
+        });
+        days.append(b);
+      }
+      const prev = cal.querySelector('[data-nav="-1"]'), next = cal.querySelector('[data-nav="1"]');
+      if (prev) prev.disabled = (viewY === hoje.getFullYear() && viewM === hoje.getMonth());
+      if (next) next.disabled = (viewY * 12 + viewM >= hoje.getFullYear() * 12 + maxM);
+    }
+    function open() { btn.setAttribute("aria-expanded", "true"); cal.hidden = false; }
+    function close() { btn.setAttribute("aria-expanded", "false"); cal.hidden = true; }
+    render();
+    btn.addEventListener("click", () => { cal.hidden ? open() : close(); });
+    btn.addEventListener("keydown", e => { if (e.key === "Escape") close(); });
+    cal.querySelectorAll(".cal-nav").forEach(n => n.addEventListener("click", () => {
+      viewM += parseInt(n.dataset.nav, 10);
+      if (viewM < 0) { viewM = 11; viewY--; }
+      if (viewM > 11) { viewM = 0; viewY++; }
+      render();
+    }));
+    document.addEventListener("click", e => { if (!btn.contains(e.target) && !cal.contains(e.target)) close(); });
   })();
 
   const y = document.getElementById("ano"); if (y) y.textContent = new Date().getFullYear();

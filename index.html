@@ -186,7 +186,16 @@
           <ul class="combo-list" role="listbox" aria-labelledby="f-tipo-label" hidden></ul>
         </div></div>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
-        <div><label for="f-data">Data</label><input id="f-data" name="data" type="date" required></div>
+        <div><label id="f-data-label" for="f-data-btn">Data</label>
+          <div class="combo">
+            <input type="hidden" id="f-data" name="data">
+            <button type="button" class="combo-btn" id="f-data-btn" aria-haspopup="dialog" aria-expanded="false" aria-labelledby="f-data-label f-data-btn"><span>Escolha a data</span><i>▾</i></button>
+            <div class="cal" role="dialog" aria-label="Escolher data do evento" hidden>
+              <div class="cal-head"><button type="button" class="cal-nav" data-nav="-1" aria-label="Mês anterior">‹</button><strong></strong><button type="button" class="cal-nav" data-nav="1" aria-label="Próximo mês">›</button></div>
+              <div class="cal-grid cal-dow"><span>D</span><span>S</span><span>T</span><span>Q</span><span>Q</span><span>S</span><span>S</span></div>
+              <div class="cal-grid cal-days"></div>
+            </div>
+          </div></div>
         <div><label for="f-cidade">Cidade</label><input id="f-cidade" name="cidade" value="Brasília/DF" required autocomplete="address-level2"></div>
       </div>
       <div><label for="f-detalhes">Detalhes (idade do aniversariante, local, duração…)</label><textarea id="f-detalhes" name="detalhes" rows="3" placeholder="Ex: 5 anos, buffet na Asa Sul, 1h de música"></textarea></div>
