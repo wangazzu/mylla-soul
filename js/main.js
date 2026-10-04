@@ -205,5 +205,42 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!el.querySelector(".sol")) el.innerHTML = el.innerHTML.replace("☀️", '<span class="sol" aria-hidden="true">☀️</span>');
   });
 
+  // Dropdown customizado do tipo de evento (espelha o <select> nativo)
+  (function () {
+    const sel = document.getElementById("f-tipo");
+    const btn = document.getElementById("f-tipo-btn");
+    const list = btn ? btn.parentElement.querySelector(".combo-list") : null;
+    if (!sel || !btn || !list) return;
+    const label = btn.querySelector("span");
+    function render() {
+      list.innerHTML = "";
+      [...sel.options].forEach((opt, i) => {
+        const li = document.createElement("li");
+        li.textContent = opt.text; li.setAttribute("role", "option");
+        li.id = "f-tipo-opt-" + i;
+        li.setAttribute("aria-selected", String(i === sel.selectedIndex));
+        li.addEventListener("click", () => { sel.selectedIndex = i; sync(); close(); btn.focus(); });
+        list.append(li);
+      });
+    }
+    function sync() {
+      label.textContent = sel.options[sel.selectedIndex].text;
+      [...list.children].forEach((li, i) => li.setAttribute("aria-selected", String(i === sel.selectedIndex)));
+    }
+    function open() { btn.setAttribute("aria-expanded", "true"); list.hidden = false; }
+    function close() { btn.setAttribute("aria-expanded", "false"); list.hidden = true; }
+    render(); sync();
+    btn.addEventListener("click", () => { list.hidden ? open() : close(); });
+    btn.addEventListener("keydown", e => {
+      if (e.key === "ArrowDown" || e.key === "ArrowUp") {
+        e.preventDefault();
+        const d = e.key === "ArrowDown" ? 1 : -1;
+        sel.selectedIndex = (sel.selectedIndex + d + sel.options.length) % sel.options.length;
+        sync(); if (list.hidden) open();
+      } else if (e.key === "Escape") { close(); }
+    });
+    document.addEventListener("click", e => { if (!btn.contains(e.target) && !list.contains(e.target)) close(); });
+  })();
+
   const y = document.getElementById("ano"); if (y) y.textContent = new Date().getFullYear();
 });

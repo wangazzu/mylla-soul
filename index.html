@@ -179,8 +179,12 @@
     </div>
     <form class="orc" id="orcamento" novalidate>
       <div><label for="f-nome">Seu nome</label><input id="f-nome" name="nome" required placeholder="Ex: Ana Paula" autocomplete="name"></div>
-      <div><label for="f-tipo">Tipo de evento</label>
-        <select id="f-tipo" name="tipo"><option>Aniversário infantil</option><option>Show / Evento adulto</option><option>Aula de musicalização</option><option>Escola / Empresa (Press Kit)</option></select></div>
+      <div><label id="f-tipo-label" for="f-tipo-btn">Tipo de evento</label>
+        <div class="combo">
+          <select id="f-tipo" name="tipo" tabindex="-1" aria-hidden="true"><option>Aniversário infantil</option><option>Show / Evento adulto</option><option>Aula de musicalização</option><option>Escola / Empresa (Press Kit)</option></select>
+          <button type="button" class="combo-btn" id="f-tipo-btn" aria-haspopup="listbox" aria-expanded="false" aria-labelledby="f-tipo-label f-tipo-btn"><span>Aniversário infantil</span><i>▾</i></button>
+          <ul class="combo-list" role="listbox" aria-labelledby="f-tipo-label" hidden></ul>
+        </div></div>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
         <div><label for="f-data">Data</label><input id="f-data" name="data" type="date" required></div>
         <div><label for="f-cidade">Cidade</label><input id="f-cidade" name="cidade" value="Brasília/DF" required autocomplete="address-level2"></div>

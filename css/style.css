@@ -169,6 +169,19 @@ form.orc{background:#fff;border-radius:var(--radius);padding:26px;box-shadow:var
 label{font-weight:800;font-size:.9rem}
 input,select,textarea{width:100%;padding:13px 15px;border-radius:12px;border:2px solid #d9d4f5;font-family:inherit;font-size:1rem;background:#fffdf7}
 input:focus,select:focus,textarea:focus{outline:none;border-color:var(--roxo)}
+/* Dropdown customizado (combo) no tema do site */
+.combo{position:relative}
+.combo select{position:absolute;opacity:0;pointer-events:none;width:100%;height:100%}
+.combo-btn{width:100%;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:13px 15px;border-radius:12px;border:2px solid #d9d4f5;background:#fffdf7;font-family:inherit;font-size:1rem;font-weight:700;color:var(--tinta);cursor:pointer}
+.combo-btn:focus-visible{outline:3px solid var(--roxo);outline-offset:3px}
+.combo-btn[aria-expanded="true"]{border-color:var(--roxo)}
+.combo-btn i{font-style:normal;color:var(--roxo);font-weight:900;transition:transform .15s}
+.combo-btn[aria-expanded="true"] i{transform:rotate(180deg)}
+.combo-list{position:absolute;top:calc(100% + 6px);left:0;right:0;z-index:40;list-style:none;background:#fff;border:2px solid var(--roxo);border-radius:14px;box-shadow:0 10px 30px rgba(43,35,80,.18);overflow:hidden;padding:6px;margin:0}
+.combo-list[hidden]{display:none}
+.combo-list li{font-family:var(--font-titulo);font-weight:700;padding:11px 14px;border-radius:10px;cursor:pointer}
+.combo-list li:hover{background:var(--lilas-bg)}
+.combo-list li[aria-selected="true"]{background:var(--roxo);color:#fff}
 .form-status{min-height:1.4em;font-weight:800;font-size:.9rem}
 .form-status.ok{color:#128C4B}.form-status.erro{color:#C92A2A}
 /* FAQ */
