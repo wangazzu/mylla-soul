@@ -37,9 +37,9 @@ header{position:sticky;top:0;z-index:50;background:rgba(255,251,243,.96);backdro
 .links{display:none;gap:20px;font-weight:800;font-size:.95rem}
 .links a{text-decoration:none}
 .nav-icons{display:flex;gap:10px;align-items:center}
-.icon-btn{width:44px;height:44px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;box-shadow:0 4px 0 rgba(43,35,80,.25);transition:transform .15s}
+.icon-btn{width:36px;height:36px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;box-shadow:0 4px 0 rgba(43,35,80,.25);transition:transform .15s}
 .icon-btn:hover{transform:translateY(-2px)}
-.icon-btn svg{width:24px;height:24px;fill:#fff}
+.icon-btn svg{width:19px;height:19px;fill:#fff}
 .icon-btn.wa{background:var(--verde-wa)}
 .icon-btn.ig{background:linear-gradient(45deg,#F58529,#DD2A7B,#8134AF)}
 .hamb{display:inline-flex;align-items:center;justify-content:center;background:none;border:2px solid var(--tinta);border-radius:12px;width:44px;height:44px;font-size:1.4rem;cursor:pointer;color:var(--tinta);flex-shrink:0}
