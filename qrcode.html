@@ -20,7 +20,20 @@
 </div>
 <p class="no-print" style="font-size:.85rem;margin-top:12px">TODO: após publicar, trocar <code id="url"></code> pelo domínio final em js/config.js — o QR atualiza sozinho.</p>
 </div></section>
+<footer id="contato" class="no-print">
+  <div class="container">
+    <h2 style="color:#fff">Vamos cantar juntos? ☀️</h2>
+    <p>Brasília/DF • Atendimento com alegria</p>
+    <p style="margin:20px 0;display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
+      <a class="btn btn-wa" data-wa href="#">WhatsApp</a>
+      <a class="btn btn-outline" data-insta href="#" style="border-color:#ffd76e;color:#ffd76e">Instagram</a>
+      <a class="btn btn-outline" data-yt href="#" style="border-color:#ffd76e;color:#ffd76e">YouTube</a>
+    </p>
+    <p style="font-size:.9rem">© <span id="ano"></span> Mylla Soul • Feito com música por Wanderson Rodrigues da Silva<br><a href="index.html">Início</a> • <a href="press-kit.html">Press Kit</a> • <a href="blog.html">Blog</a></p>
+  </div>
+</footer>
 <script src="js/config.js"></script>
+<script src="js/main.js"></script>
 <script>
 const u = document.getElementById('url'); if(u) u.textContent = SITE_CONFIG.siteUrl;
 document.getElementById('qr').src = "https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=" + encodeURIComponent(SITE_CONFIG.siteUrl);
