@@ -85,10 +85,6 @@ section .card,section form,section details{text-align:left}
 .d4{bottom:16%;right:6%;width:44px;height:14px;border:5px solid var(--laranja);border-radius:100px;transform:rotate(-14deg);animation-delay:1.6s}
 @keyframes flutuar{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-14px) rotate(6deg)}}
 /* Onda divisória do hero */
-.onda{display:block;width:100%;height:60px;background:var(--creme);margin-bottom:-2px}
-.onda path{fill:#FFC933}
-.onda-topo{display:block;width:100%;height:50px;background:#FFD23E;margin-bottom:-2px}
-.onda-topo path{fill:var(--creme)}
 /* Sobre */
 .sobre-card{display:grid;gap:20px;align-items:center}
 .sobre-foto{border-radius:var(--radius);width:100%;max-width:420px;height:auto;display:block;margin:0 auto;box-shadow:var(--shadow)}
