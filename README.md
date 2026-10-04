@@ -2,6 +2,6 @@
 
 Música, alegria & vida para pequenos e grandes.
 
-- Site: https://mylla-soul.vercel.app
-- Instagram: https://instagram.com/mylla.soul
-- YouTube: https://www.youtube.com/@Mylla_Sousa
+- <a href="https://mylla-soul.vercel.app" target="_blank">Site</a>
+- <a href="https://instagram.com/mylla.soul" target="_blank">Instagram</a>
+- <a href="https://www.youtube.com/@Mylla_Sousa" target="_blank">YouTube</a>
