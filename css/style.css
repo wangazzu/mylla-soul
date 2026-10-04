@@ -1,0 +1,216 @@
+/* ============================================================
+   MYLLA SOUL — Tema "Alegria" (inspirado em ref. Kidza)
+   Sistema: tokens, ondas, blobs, doodles, cards pastel,
+   botões pill com sombra dura, reveal + contadores via JS
+   ============================================================ */
+:root{
+  --roxo:#5B3DF5; --roxo-esc:#3F27B8; --noite:#2A2356; --tinta:#2B2350;
+  --amarelo:#FFB800; --laranja:#FF7A00; --coral:#FF5A5A;
+  --rosa-bg:#FFE9F1; --verde-bg:#E4F6EA; --lilas-bg:#EBE9FF; --amarelo-bg:#FFF3D6;
+  --creme:#FFFBF3; --branco:#fff; --verde-wa:#25D366;
+  --radius:24px; --shadow:0 10px 30px rgba(43,35,80,.12);
+  --font:'Nunito',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+  --font-titulo:'Baloo 2','Nunito',system-ui,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--font);background:var(--creme);color:var(--tinta);line-height:1.6;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit}
+.container{width:min(1100px,92%);margin:0 auto}
+section{padding:64px 0;position:relative}
+section[id],div[id]{scroll-margin-top:48px}
+h1,h2,h3{font-family:var(--font-titulo);line-height:1.15;font-weight:800}
+h2{font-size:clamp(1.6rem,5vw,2.3rem);text-align:center;margin-bottom:8px}
+.sub{text-align:center;opacity:.75;margin-bottom:32px;font-size:1.05rem;max-width:640px;margin-left:auto;margin-right:auto}
+:focus-visible{outline:3px solid var(--roxo);outline-offset:3px;border-radius:8px}
+/* Acessibilidade: skip link */
+.skip{position:absolute;left:-9999px;top:0;background:var(--noite);color:#fff;padding:12px 20px;z-index:200;border-radius:0 0 12px 0;font-weight:800}
+.skip:focus{left:0}
+/* Header */
+header{position:sticky;top:0;z-index:50;background:rgba(255,251,243,.96);backdrop-filter:blur(10px);border-bottom:2px solid #ffe1a8}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px 0}
+.logo{font-family:var(--font-titulo);font-weight:800;font-size:1.35rem;letter-spacing:.5px}
+.logo span{color:var(--laranja)}
+.logo .sol{display:inline-block;color:var(--amarelo);animation:sol-pulsar 2.4s ease-in-out infinite;transform-origin:50% 55%}
+@keyframes sol-pulsar{0%,100%{transform:scale(1)}50%{transform:scale(1.2)}}
+.links{display:none;gap:20px;font-weight:800;font-size:.95rem}
+.links a{text-decoration:none}
+.nav-icons{display:flex;gap:10px;align-items:center}
+.icon-btn{width:44px;height:44px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;box-shadow:0 4px 0 rgba(43,35,80,.25);transition:transform .15s}
+.icon-btn:hover{transform:translateY(-2px)}
+.icon-btn svg{width:24px;height:24px;fill:#fff}
+.icon-btn.wa{background:var(--verde-wa)}
+.icon-btn.ig{background:linear-gradient(45deg,#F58529,#DD2A7B,#8134AF)}
+.hamb{display:inline-flex;align-items:center;justify-content:center;background:none;border:2px solid var(--tinta);border-radius:12px;width:44px;height:44px;font-size:1.4rem;cursor:pointer;color:var(--tinta);flex-shrink:0}
+.mobile-menu{display:none;border-top:2px solid #ffe1a8;padding:6px 4% 14px;background:rgba(255,251,243,.98)}
+.mobile-menu.open{display:grid}
+.mobile-menu a{text-decoration:none;font-weight:800;padding:11px 4px;border-bottom:1px solid #f3e2bb}
+@media(min-width:800px){
+  .hamb{display:none}
+  .mobile-menu{display:none !important}
+}
+/* Botões pill estilo sticker */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;text-decoration:none;font-weight:900;font-family:var(--font-titulo);padding:14px 28px;border-radius:100px;border:none;cursor:pointer;font-size:1rem;transition:transform .15s,box-shadow .15s}
+.btn-wa{background:var(--verde-wa);color:#fff;box-shadow:0 4px 0 #128C4B}
+.btn-sol{background:linear-gradient(135deg,var(--amarelo),var(--laranja));color:var(--tinta);box-shadow:0 4px 0 #B25A00}
+.btn-roxo{background:var(--roxo);color:#fff;box-shadow:0 4px 0 var(--roxo-esc)}
+.btn-outline{background:#fff;border:2px solid var(--tinta);color:var(--tinta);box-shadow:0 4px 0 var(--tinta)}
+.btn:hover{transform:translateY(-2px)}
+.btn:active{transform:translateY(2px);box-shadow:none}
+.btn[disabled]{opacity:.6;cursor:wait;transform:none}
+.btn-sm{padding:10px 18px;font-size:.9rem}
+/* Selo / badge */
+.badge{display:inline-block;background:var(--roxo);color:#fff;font-family:var(--font-titulo);font-size:.8rem;font-weight:700;padding:6px 16px;border-radius:100px;letter-spacing:.5px;text-transform:uppercase;margin-bottom:12px}
+.badge-sol{background:linear-gradient(135deg,var(--amarelo),var(--laranja));color:var(--tinta)}
+section{text-align:center}
+section .card,section form,section details{text-align:left}
+/* HERO */
+.hero{background:linear-gradient(180deg,#FFD23E 0%,#FFC933 45%,var(--creme) 100%);padding:40px 0 90px;text-align:center;position:relative;overflow:hidden}
+.hero h1{font-size:clamp(2.1rem,8vw,3.4rem);margin:12px 0}
+.hero p{font-size:clamp(1.05rem,4vw,1.3rem);color:#5a3a10;max-width:600px;margin:0 auto 24px}
+.hero-cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.hero-inner{display:flex;flex-direction:column;gap:8px}
+.hero-blob{position:relative;display:inline-block}
+.hero-foto{width:min(420px,85%);aspect-ratio:3/4;border-radius:46% 54% 52% 48%/44% 46% 54% 56%;margin:28px auto 0;border:6px solid #fff;box-shadow:var(--shadow);overflow:hidden;background:linear-gradient(135deg,#ffdf80,#ffb347)}
+.hero-foto img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block}
+.sticker{position:absolute;top:6px;right:-8px;background:var(--roxo);color:#fff;font-family:var(--font-titulo);font-weight:800;font-size:.85rem;line-height:1.25;text-align:center;padding:14px 16px;border-radius:50%;transform:rotate(10deg);box-shadow:0 6px 0 rgba(43,35,80,.25);z-index:2;border:3px dashed #FFE66D}
+/* Doodles flutuantes */
+.hero .container{position:relative;z-index:1}
+.doodles{position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:0}
+.doodles span{position:absolute;display:block;animation:flutuar 5s ease-in-out infinite}
+.d1{width:34px;height:34px;border:5px solid var(--coral);border-radius:50%;top:12%;left:6%}
+.d2{width:18px;height:18px;background:var(--roxo);border-radius:50%;bottom:22%;left:10%;animation-delay:1s}
+.d3{top:16%;right:8%;font-size:2rem;animation-delay:.5s}
+.d4{bottom:16%;right:6%;width:44px;height:14px;border:5px solid var(--laranja);border-radius:100px;transform:rotate(-14deg);animation-delay:1.6s}
+@keyframes flutuar{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-14px) rotate(6deg)}}
+/* Onda divisória do hero */
+.onda{display:block;width:100%;height:60px;background:var(--creme);margin-bottom:-2px}
+.onda path{fill:#FFC933}
+.onda-topo{display:block;width:100%;height:50px;background:#FFD23E;margin-bottom:-2px}
+.onda-topo path{fill:var(--creme)}
+/* Sobre */
+.sobre-card{display:grid;gap:20px;align-items:center}
+.sobre-foto{border-radius:var(--radius);width:100%;max-width:420px;height:auto;display:block;margin:0 auto;box-shadow:var(--shadow)}
+@media(min-width:800px){
+  .sobre-card{grid-template-columns:minmax(280px,380px) 1fr}
+  .sobre-foto{margin:0}
+}
+/* Serviços = cards pastel */
+.grid3{display:grid;gap:18px}
+.grid3 .card{display:flex;flex-direction:column;border-radius:14px;text-align:center}
+.grid3 .card ul{display:inline-block;text-align:left;margin:12px auto 20px;padding-left:20px}
+.grid3 .card .emoji{margin:0 auto 10px;background:var(--noite);box-shadow:0 4px 0 rgba(43,35,80,.3);border-radius:28%;transform:rotate(-8deg);border:3px dashed #fff}
+.grid3 .card:nth-child(even) .emoji{transform:rotate(8deg)}
+.grid3 .card ul{margin-bottom:20px}
+.grid3 .card .btn{margin-top:auto;align-self:center}
+.card{border-radius:var(--radius);padding:30px 24px;box-shadow:var(--shadow);background:#fff;border-top:6px solid var(--amarelo)}
+.card .emoji{font-size:2.2rem;width:66px;height:66px;display:flex;align-items:center;justify-content:center;background:#fff;border-radius:50%;box-shadow:var(--shadow);margin-bottom:6px}
+.card h3{margin:10px 0 6px;font-size:1.3rem}
+.card ul{margin:12px 0 18px 18px;font-size:.95rem}
+.card .pill{display:inline-block;font-size:.75rem;font-weight:900;background:var(--tinta);color:#fff;border-radius:100px;padding:4px 12px;margin-bottom:8px}
+.card.p-rosa{background:var(--rosa-bg);border-top-color:var(--coral)}
+.card.p-verde{background:var(--verde-bg);border-top-color:var(--verde-wa)}
+.card.p-lilas{background:var(--lilas-bg);border-top-color:var(--roxo)}
+.card.p-amarelo{background:var(--amarelo-bg)}
+.card.destaque{border-top-color:var(--coral)}
+/* Vídeos / galeria */
+.video-grid,.foto-grid{display:grid;gap:16px}
+.video-frame{position:relative;border-radius:16px;overflow:hidden;background:#1e1000;box-shadow:var(--shadow);border-bottom:6px solid var(--amarelo)}
+.video-local{width:100%;aspect-ratio:9/16;object-fit:cover;border-radius:16px 16px 0 0;display:block;background:#1e1000}
+.video-start{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:none;border:none;cursor:pointer;width:100%}
+.video-start b{width:72px;height:72px;border-radius:50%;background:linear-gradient(135deg,var(--amarelo),var(--laranja));color:var(--tinta);font-size:1.6rem;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 0 rgba(178,90,0,.45);border:3px dashed #fff;transition:transform .15s}
+.video-start:hover b{transform:scale(1.1)}
+.video-start[hidden]{display:none}
+/* Lightbox (popup de vídeo) */
+.lightbox{position:fixed;inset:0;z-index:100;background:rgba(20,12,40,.88);display:flex;align-items:center;justify-content:center;padding:4vw}
+.lightbox[hidden]{display:none}
+.lb-box{position:relative;width:min(420px,100%);background:#1e1000;border-radius:20px;padding:14px;box-shadow:0 20px 60px rgba(0,0,0,.5);border-bottom:6px solid var(--amarelo)}
+.lb-close{position:absolute;top:-16px;right:-10px;width:44px;height:44px;border-radius:50%;border:3px dashed #fff;background:var(--coral);color:#fff;font-size:1.2rem;font-weight:900;cursor:pointer;box-shadow:0 4px 0 rgba(0,0,0,.3)}
+.lb-stage video{width:100%;max-height:76vh;aspect-ratio:9/16;object-fit:contain;border-radius:12px;display:block;background:#000}
+.video-embed{position:relative;aspect-ratio:16/9;border-radius:16px;overflow:hidden;background:#1e1000;box-shadow:var(--shadow)}
+.video-embed img{width:100%;height:100%;object-fit:cover;display:block}
+.video-embed .play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-decoration:none}
+.video-embed .play b{width:68px;height:68px;border-radius:50%;background:var(--coral);color:#fff;font-size:1.6rem;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 0 rgba(0,0,0,.3);transition:transform .15s}
+.video-embed:hover .play b{transform:scale(1.1)}
+.video-embed iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.video-embed.tall{aspect-ratio:4/5;max-height:620px;background:linear-gradient(135deg,#3b2a6e,#7a2ea0)}
+.video-embed.tall .play b{background:linear-gradient(45deg,#F58529,#DD2A7B,#8134AF)}
+.video-pending{display:flex;align-items:center;justify-content:center;text-align:center;color:#ffe1a8;font-weight:700;padding:16px;aspect-ratio:16/9;background:#1e1000;border-radius:16px}
+.video-pending small{opacity:.7;font-weight:400}
+.foto-grid{grid-template-columns:repeat(2,1fr)}
+.foto-box{aspect-ratio:3/4;border-radius:16px;overflow:hidden;background:#ffe1a8;box-shadow:var(--shadow)}
+.foto-box img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block}
+.foto-box.pos-left img{object-position:left center}
+.foto-box.pos-center img{object-position:center 30%}
+.sem-foto{min-height:200px;display:flex;align-items:center;justify-content:center;font-weight:800;color:#7a4a00}
+.sem-foto::after{content:"☀️ Mylla Soul"}
+/* Faixa roxa de estatísticas com ondas */
+.stats{background:var(--roxo);color:#fff;padding:90px 0 100px;margin:20px 0 0}
+.stats::before,.stats::after{content:"";position:absolute;left:0;width:100%;height:50px;background-repeat:no-repeat;background-size:100% 100%}
+.stats::before{top:-1px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 50' preserveAspectRatio='none'%3E%3Cpath d='M0,30 C240,55 480,5 720,25 C960,45 1200,10 1440,30 L1440,0 L0,0 Z' fill='%23FFFBF3'/%3E%3C/svg%3E")}
+.stats::after{bottom:-1px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 50' preserveAspectRatio='none'%3E%3Cpath d='M0,20 C240,0 480,45 720,25 C960,5 1200,40 1440,20 L1440,50 L0,50 Z' fill='%23ffffff'/%3E%3C/svg%3E")}
+.stats-grid{display:grid;gap:16px;grid-template-columns:repeat(2,1fr);max-width:800px;margin:0 auto}
+.stat{background:rgba(255,255,255,.12);border:2px dashed rgba(255,255,255,.5);border-radius:20px;padding:20px 12px}
+.stat b{font-family:var(--font-titulo);font-size:clamp(1.6rem,6vw,2.4rem);display:block;color:#FFE66D}
+.stat span{font-size:.9rem;font-weight:700}
+/* Depoimentos */
+.depo-grid{display:grid;gap:16px}
+.depo{background:#fff;border-radius:var(--radius);padding:24px;box-shadow:var(--shadow);border-left:6px solid var(--verde-wa)}
+.depo p{font-style:italic}
+.depo strong{display:block;margin-top:10px}
+/* Passos + form */
+.passos{display:grid;gap:12px;margin-bottom:28px}
+.passo{background:#fff;border-radius:14px;padding:16px 18px;display:flex;gap:12px;align-items:center;font-weight:700;box-shadow:var(--shadow)}
+.passo b{background:var(--roxo);color:#fff;width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:var(--font-titulo)}
+form.orc{background:#fff;border-radius:var(--radius);padding:26px;box-shadow:var(--shadow);display:grid;gap:14px;max-width:640px;margin:0 auto}
+label{font-weight:800;font-size:.9rem}
+input,select,textarea{width:100%;padding:13px 15px;border-radius:12px;border:2px solid #d9d4f5;font-family:inherit;font-size:1rem;background:#fffdf7}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--roxo)}
+.form-status{min-height:1.4em;font-weight:800;font-size:.9rem}
+.form-status.ok{color:#128C4B}.form-status.erro{color:#C92A2A}
+/* FAQ */
+details{background:#fff;border-radius:14px;padding:16px 18px;margin-bottom:10px;box-shadow:var(--shadow);max-width:760px;margin-left:auto;margin-right:auto}
+summary{font-weight:900;cursor:pointer;font-family:var(--font-titulo)}
+/* Footer */
+footer{background:var(--noite);color:#e6e2ff;padding:56px 0 100px;text-align:center;position:relative}
+footer a{color:#ffd76e}
+footer h2{color:#fff}
+/* Blog / press */
+.page-hero{background:linear-gradient(135deg,var(--amarelo),var(--laranja));padding:52px 0;text-align:center}
+.post-card{background:#fff;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);text-decoration:none;display:block}
+.post-card div{padding:22px}
+.post-card h3{margin-bottom:8px}
+.article{max-width:720px;margin:0 auto;background:#fff;border-radius:var(--radius);padding:32px 26px;box-shadow:var(--shadow)}
+.article h2{text-align:left}.article p,.article li{margin-bottom:14px}
+/* Reveal on scroll */
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .6s ease,transform .6s ease}
+.reveal.vis{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  .logo .sol,.doodles span{animation:none}
+  .reveal{opacity:1;transform:none;transition:none}
+  html{scroll-behavior:auto}
+}
+@media(min-width:800px){
+  .links{display:flex}
+  .grid3{grid-template-columns:repeat(3,1fr)}
+  .grid3.cols4{grid-template-columns:repeat(4,1fr)}
+  .video-grid{grid-template-columns:repeat(3,1fr)}
+  .foto-grid{grid-template-columns:repeat(4,1fr)}
+  .depo-grid{grid-template-columns:repeat(3,1fr)}
+  .passos{grid-template-columns:repeat(3,1fr)}
+  .stats-grid{grid-template-columns:repeat(4,1fr)}
+  .hero-inner{display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:30px;text-align:left}
+  .hero-blob{grid-column:2;grid-row:1/3}
+  .hero-cta{grid-column:1;grid-row:2;justify-content:flex-start;margin-top:-8px}
+  .hero p{margin:0 0 24px}.hero-cta{justify-content:flex-start}.hero-foto{margin:0}
+  .hero{text-align:left}
+}
+/* Mobile: doodles longe do texto */
+@media(max-width:799px){
+  .hero-cta{margin-top:14px}
+  .d1{top:auto;bottom:10%;left:4%;width:24px;height:24px}
+  .d2{bottom:8%;left:auto;right:8%}
+  .d3{display:none}
+  .d4{top:6%;bottom:auto;right:4%}
+}

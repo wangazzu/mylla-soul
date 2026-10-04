@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://myllasoul.com.br/sitemap.xml

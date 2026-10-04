@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>QR Code — Mylla Soul</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<style>@media print{.no-print{display:none}body{background:#fff}}</style>
+</head>
+<body>
+<div class="page-hero no-print"><div class="container"><h1>QR Code para eventos</h1><p>Imprima e coloque no cavalete / palco. Aponta para o WhatsApp + site.</p></div></div>
+<section><div class="container" style="text-align:center;max-width:520px">
+<div class="card">
+<h3>☀️ Mylla Soul — Música, alegria & vida</h3>
+<p>Gostou? Chama no WhatsApp!</p>
+<img id="qr" alt="QR Code" style="width:240px;margin:16px auto">
+<p style="font-size:.85rem;color:#6B4226">Escaneie para pedir orçamento</p>
+<p class="no-print"><button class="btn btn-sol" onclick="window.print()">🖨️ Imprimir</button> <a class="btn btn-outline btn-sm" href="index.html">Voltar</a></p>
+</div>
+<p class="no-print" style="font-size:.85rem;margin-top:12px">TODO: após publicar, trocar <code id="url"></code> pelo domínio final em js/config.js — o QR atualiza sozinho.</p>
+</div></section>
+<script src="js/config.js"></script>
+<script>
+const u = document.getElementById('url'); if(u) u.textContent = SITE_CONFIG.siteUrl;
+document.getElementById('qr').src = "https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=" + encodeURIComponent(SITE_CONFIG.siteUrl);
+</script>
+</body></html>

@@ -1,0 +1,8 @@
+# Backup dos vídeos originais (pesados) — não vai para o GitHub/Vercel
+assets/videos/originais/
+# Originais das fotos, se houver
+assets/fotos/originais/
+# Sistema
+Thumbs.db
+.DS_Store
+Desktop.ini
