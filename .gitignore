@@ -1,6 +1,9 @@
 # Config local do OpenCode (MCP etc.) — nao vai para o repo
 opencode.json
 .opencode/
+# Arquivos internos — nao publicar
+assets/fotos/tema.jpg
+Plano-Site-Mylla-Soul.pdf
 # Backup dos vídeos originais (pesados) — não vai para o GitHub/Vercel
 assets/videos/originais/
 # Originais das fotos, se houver
