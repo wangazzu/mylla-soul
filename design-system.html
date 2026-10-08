@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Design System — Mylla Soul (guia interno)</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="Guia interno de tokens e componentes do site Mylla Soul.">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@400;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<meta name="theme-color" content="#5B3DF5">
+<style>
+.ds-swatches{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px;text-align:left}
+.ds-sw{border-radius:14px;overflow:hidden;box-shadow:var(--shadow);background:#fff}
+.ds-sw i{display:block;height:64px}
+.ds-sw div{padding:10px 12px;font-size:.85rem;font-weight:800}
+.ds-sw code{font-weight:400;font-size:.75rem;display:block}
+.ds-demo{background:#fff;border-radius:var(--radius-xl);box-shadow:var(--shadow);padding:26px;margin-bottom:18px;text-align:left}
+.ds-demo h3{margin-bottom:14px}
+.ds-demo pre{background:var(--noite);color:#e6e2ff;border-radius:12px;padding:14px 16px;overflow-x:auto;font-size:.8rem;margin-top:16px}
+.ds-row{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.ds-tipo{border-bottom:2px dashed #d9d4f5;padding:14px 0}
+</style>
+</head>
+<body>
+<a class="skip" href="#conteudo">Pular para o conteúdo</a>
+<header><div class="container nav">
+<div class="logo"><a href="index.html" style="text-decoration:none">MYLLA <span>SOUL</span> ☀️</a></div>
+<nav class="links"><a href="index.html">Início</a><a href="press-kit.html">Press Kit</a><a href="blog.html">Blog</a></nav>
+<a class="btn btn-wa btn-sm" data-wa href="#">WhatsApp</a>
+</div></header>
+
+<div class="page-hero" id="conteudo"><div class="container">
+<span class="badge">Guia interno • v1.0</span>
+<h1>Design System Mylla Soul</h1>
+<p>Tokens e componentes vivos do tema "Alegria". Página fora do menu e do Google (<code>noindex</code>).<br>Ao criar um componente novo, adicione-o aqui.</p>
+</div></div>
+
+<section><div class="container" style="max-width:900px">
+
+<div class="ds-demo"><h3>1. Cores</h3>
+<div class="ds-swatches">
+<div class="ds-sw"><i style="background:#5B3DF5"></i><div>Roxo<code>--roxo</code></div></div>
+<div class="ds-sw"><i style="background:#3F27B8"></i><div>Roxo escuro<code>--roxo-esc</code></div></div>
+<div class="ds-sw"><i style="background:#2A2356"></i><div>Noite<code>--noite</code></div></div>
+<div class="ds-sw"><i style="background:#2B2350"></i><div>Tinta (texto)<code>--tinta</code></div></div>
+<div class="ds-sw"><i style="background:#FFB800"></i><div>Amarelo sol<code>--amarelo</code></div></div>
+<div class="ds-sw"><i style="background:#FF7A00"></i><div>Laranja<code>--laranja</code></div></div>
+<div class="ds-sw"><i style="background:#FF5A5A"></i><div>Coral<code>--coral</code></div></div>
+<div class="ds-sw"><i style="background:#25D366"></i><div>WhatsApp<code>--verde-wa</code></div></div>
+<div class="ds-sw"><i style="background:#FFE9F1"></i><div>Rosa pastel<code>--rosa-bg</code></div></div>
+<div class="ds-sw"><i style="background:#E4F6EA"></i><div>Verde pastel<code>--verde-bg</code></div></div>
+<div class="ds-sw"><i style="background:#EBE9FF"></i><div>Lilás pastel<code>--lilas-bg</code></div></div>
+<div class="ds-sw"><i style="background:#FFF3D6"></i><div>Amarelo pastel<code>--amarelo-bg</code></div></div>
+<div class="ds-sw"><i style="background:#FFFBF3"></i><div>Creme (fundo)<code>--creme</code></div></div>
+</div>
+<p style="margin-top:12px;font-size:.9rem">Regra: fundo creme/branco + tinta; roxo para selos e destaques; pastéis só em cards; gradiente amarelo→laranja só em CTAs solares.</p>
+</div>
+
+<div class="ds-demo"><h3>2. Tipografia</h3>
+<div class="ds-tipo"><h1 style="text-align:left">Título H1 — Baloo 2</h1><code>--font-titulo • clamp(2.1rem, 8vw, 3.4rem)</code></div>
+<div class="ds-tipo"><h2 style="text-align:left">Título H2 — Baloo 2</h2><code>clamp(1.6rem, 5vw, 2.3rem)</code></div>
+<div class="ds-tipo"><h3>Subtítulo H3 — Baloo 2</h3></div>
+<p style="margin-top:10px">Corpo: Nunito 1rem/1.6 (<code>--font</code>). Títulos sempre na fonte arredondada; nunca caixa alta em H1/H2.</p>
+</div>
+
+<div class="ds-demo"><h3>3. Botões</h3>
+<div class="ds-row">
+<a class="btn btn-wa" href="#" onclick="return false">WhatsApp</a>
+<a class="btn btn-sol" href="#" onclick="return false">Orçamento</a>
+<a class="btn btn-roxo" href="#" onclick="return false">Press Kit</a>
+<a class="btn btn-outline" href="#" onclick="return false">Ver vídeos</a>
+</div>
+<pre>&lt;a class="btn btn-wa" data-wa href="#"&gt;WhatsApp&lt;/a&gt;
+&lt;a class="btn btn-sol" href="#"&gt;Orçamento&lt;/a&gt;
+&lt;a class="btn btn-roxo" href="#"&gt;Press Kit&lt;/a&gt;
+&lt;!-- .btn-sm para versão compacta --&gt;</pre>
+<p style="margin-top:10px;font-size:.9rem">Pill + sombra dura 4px (afunda no clique). Ação principal = <code>btn-wa</code> ou <code>btn-sol</code>; só um primário por bloco.</p>
+</div>
+
+<div class="ds-demo"><h3>4. Selos e badges</h3>
+<div class="ds-row"><span class="badge">Serviços</span><span class="badge badge-sol">Agenda aberta</span></div>
+<pre>&lt;span class="badge"&gt;Serviços&lt;/span&gt;</pre>
+</div>
+
+<div class="ds-demo"><h3>5. Cards</h3>
+<div class="grid3" style="grid-template-columns:repeat(auto-fit,minmax(200px,1fr))">
+<div class="card p-lilas"><div class="emoji">🎤</div><span class="pill">Pequenos &amp; grandes</span><h3>Exemplo</h3><p>Card pastel + selo-ícone escuro girado + pill + CTA na base.</p><a class="btn btn-sol btn-sm" href="#" onclick="return false">Ação</a></div>
+<div class="card p-rosa"><div class="emoji">🎂</div><span class="pill">1 a 8 anos</span><h3>Exemplo</h3><p>Botões sempre com <code>margin-top:auto</code> (alinhados na base).</p><a class="btn btn-sol btn-sm" href="#" onclick="return false">Ação</a></div>
+</div>
+<pre>&lt;div class="card p-lilas"&gt; ... &lt;/div&gt;
+&lt;!-- p-rosa / p-verde / p-amarelo / p-lilas --&gt;</pre>
+</div>
+
+<div class="ds-demo"><h3>6. Formulário</h3>
+<div class="ds-row" style="display:grid;gap:12px">
+<div><label>Texto</label><input placeholder="Ex: Ana Paula" readonly></div>
+<div><label>Combo customizado</label><div><button type="button" class="combo-btn"><span>Aniversário infantil</span><i>▾</i></button></div></div>
+</div>
+<p style="margin-top:10px;font-size:.9rem">Select nativo é substituído pelo combo JS (lista do SO não aceita estilo). Data usa calendário próprio com passados bloqueados. Estados do envio: <code>.form-status.ok / .erro</code>.</p>
+</div>
+
+<div class="ds-demo"><h3>7. Espaçamento e raios</h3>
+<p><code>--space-1…16</code> (4…64px, base 4) • <code>--radius-sm/md/lg/xl/pill</code> (12/14/16/24/100px) • sombra <code>--shadow</code> + sombra dura 4px em botões/selos.</p>
+<p style="margin-top:8px">Seções: <code>padding: var(--space-16) 0</code>. Âncoras: <code>scroll-margin-top</code> (header fixo).</p>
+</div>
+
+<div class="ds-demo"><h3>8. Movimento</h3>
+<p>Sol do logo pulsa 2.4s • doodles flutuam 4–6s • reveal on scroll • contadores • lightbox com foco gerenciado. Tudo desliga em <code>prefers-reduced-motion</code>.</p>
+</div>
+
+<div class="ds-demo"><h3>9. Regras de acessibilidade</h3>
+<ul style="margin-left:18px">
+<li>Foco sempre visível (<code>:focus-visible</code> roxo).</li>
+<li>Imagens com <code>alt</code> real; decorativas com <code>aria-hidden</code>.</li>
+<li>Popups: <code>role=dialog</code>, Escape fecha, foco retorna ao botão.</li>
+<li>Nunca inventar depoimento de cliente — usar voz da equipe ou convite.</li>
+</ul>
+</div>
+
+</div></section>
+
+<footer id="contato">
+  <div class="container">
+    <h2 style="color:#fff">Guia interno — fora do menu do site ☀️</h2>
+    <p><a href="index.html">Voltar ao início</a></p>
+    <p style="font-size:.9rem">© <span id="ano"></span> Mylla Soul</p>
+  </div>
+</footer>
+<script src="js/config.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

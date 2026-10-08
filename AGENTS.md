@@ -42,3 +42,7 @@ Botões de ícone WhatsApp/Instagram e menu hambúrguer mobile são **injetados 
 - Fotos: `assets/fotos/foto-01..10.jpg`, largura máx 1200px JPEG q82. Galeria usa moldura 3:4 + `object-position` (fotos são verticais; moldura quadrada corta cabeças).
 - Vídeos: `assets/videos/video-*.mp4` + `poster-*.jpg`. Requer FFmpeg: `powershell -ExecutionPolicy Bypass -File scripts\comprimir-videos.ps1` (backup em `originais/`, já gitignored). `preload="metadata"`: peso só baixa no play.
 - `assets/fotos/tema.jpg` é referência de design, fica fora do commit.
+
+## Design system
+
+`design-system.html` é a referência visual viva (tokens + componentes). Página com `noindex`, fora do menu. Ao criar um componente novo, adicione-o lá.
