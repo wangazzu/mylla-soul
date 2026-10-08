@@ -45,4 +45,4 @@ Botões de ícone WhatsApp/Instagram e menu hambúrguer mobile são **injetados 
 
 ## Design system
 
-`design-system.html` é a referência visual viva (tokens + componentes). Página com `noindex`, fora do menu. Ao criar um componente novo, adicione-o lá.
+`design-system.html` é a referência visual viva (tokens + componentes). Espelho em texto: `design-system.md`. Página com `noindex`, fora do menu. Ao criar um componente novo, adicione-o lá.
