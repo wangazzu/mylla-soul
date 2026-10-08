@@ -97,13 +97,13 @@ document.addEventListener("DOMContentLoaded", () => {
       locais.forEach(outro => { if (outro !== video && !outro.paused) outro.pause(); });
       btn.hidden = true; video.setAttribute("controls", "");
     });
-    const showBtn = () => { btn.hidden = false; video.removeAttribute("controls"); };
+    const showBtn = () => {
+      // No palco com vídeo encerrado, mantém controles (replay) independente da ordem pause/ended
+      if (video.closest(".lb-stage") && video.ended) { video.setAttribute("controls", ""); return; }
+      btn.hidden = false; video.removeAttribute("controls");
+    };
     video.addEventListener("pause", showBtn);
-    video.addEventListener("ended", () => {
-      // No lightbox, mantém controles para rever; na grade, volta o botão temático
-      if (video.closest(".lb-stage")) { video.setAttribute("controls", ""); }
-      else { showBtn(); }
-    });
+    video.addEventListener("ended", showBtn);
     frame.append(btn);
   });
 
