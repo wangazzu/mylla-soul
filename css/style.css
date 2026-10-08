@@ -1,6 +1,6 @@
 /* ============================================================
-   MYLLA SOUL — Tema "Alegria" (inspirado em ref. Kidza)
-   Sistema: tokens, ondas, blobs, doodles, cards pastel,
+   MYLLA SOUL — Tema "Alegria"
+   Sistema: tokens, blob, doodles, cards pastel,
    botões pill com sombra dura, reveal + contadores via JS
    ============================================================ */
 :root{
@@ -134,16 +134,6 @@ section .card,section form,section details{text-align:left}
 .lb-box{position:relative;width:min(420px,100%);background:#1e1000;border-radius:20px;padding:14px;box-shadow:0 20px 60px rgba(0,0,0,.5);border-bottom:6px solid var(--amarelo)}
 .lb-close{position:absolute;top:-16px;right:-10px;width:44px;height:44px;border-radius:50%;border:3px dashed #fff;background:var(--coral);color:#fff;font-size:1.2rem;font-weight:900;cursor:pointer;box-shadow:0 4px 0 rgba(0,0,0,.3)}
 .lb-stage video{width:100%;max-height:76vh;aspect-ratio:9/16;object-fit:contain;border-radius:12px;display:block;background:#000}
-.video-embed{position:relative;aspect-ratio:16/9;border-radius:16px;overflow:hidden;background:#1e1000;box-shadow:var(--shadow)}
-.video-embed img{width:100%;height:100%;object-fit:cover;display:block}
-.video-embed .play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-decoration:none}
-.video-embed .play b{width:68px;height:68px;border-radius:50%;background:var(--coral);color:#fff;font-size:1.6rem;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 0 rgba(0,0,0,.3);transition:transform .15s}
-.video-embed:hover .play b{transform:scale(1.1)}
-.video-embed iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
-.video-embed.tall{aspect-ratio:4/5;max-height:620px;background:linear-gradient(135deg,#3b2a6e,#7a2ea0)}
-.video-embed.tall .play b{background:linear-gradient(45deg,#F58529,#DD2A7B,#8134AF)}
-.video-pending{display:flex;align-items:center;justify-content:center;text-align:center;color:#ffe1a8;font-weight:700;padding:16px;aspect-ratio:16/9;background:#1e1000;border-radius:16px}
-.video-pending small{opacity:.7;font-weight:400}
 .foto-grid{grid-template-columns:repeat(2,1fr)}
 .foto-box{aspect-ratio:3/4;border-radius:16px;overflow:hidden;background:#ffe1a8;box-shadow:var(--shadow)}
 .foto-box img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block}

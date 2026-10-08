@@ -54,7 +54,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // Reveal on scroll (respeita prefers-reduced-motion via CSS)
-  const revealEls = document.querySelectorAll("section .card, .depo, .foto-box, .passo, details, .stat, .video-box, .video-local, .video-embed");
+  const revealEls = document.querySelectorAll("section .card, .depo, .foto-box, .passo, details, .stat, .video-local");
   if ("IntersectionObserver" in window) {
     const io = new IntersectionObserver(entries => {
       entries.forEach(en => { if (en.isIntersecting) { en.target.classList.add("vis"); io.unobserve(en.target); } });
@@ -82,46 +82,6 @@ document.addEventListener("DOMContentLoaded", () => {
     counters.forEach(el => io2.observe(el));
   } else { counters.forEach(el => { el.textContent = fmt(parseInt(el.dataset.count, 10) || 0); }); }
 
-  // Embeds de vídeo: data-yt="ID" (YouTube) ou data-reel="URL" (Instagram Reel)
-  // Capa + play; o iframe só carrega no clique (performance)
-  document.querySelectorAll(".video-embed").forEach(slot => {
-    const id = (slot.dataset.yt || "").trim();
-    let reel = (slot.dataset.reel || "").trim();
-    if (reel && !reel.endsWith("/")) reel += "/";
-    const title = slot.dataset.title || "Vídeo Mylla Soul";
-    const si = (slot.dataset.si || "").trim();
-    const params = si ? "?si=" + encodeURIComponent(si) + "&rel=0" : "?rel=0";
-    if (!id && !reel) {
-      slot.classList.add("video-pending");
-      slot.innerHTML = "<span>🎬 Vídeo em breve<br><small>aguardando link do YouTube</small></span>";
-      return;
-    }
-    if (reel) {
-      const play = document.createElement("a");
-      play.className = "play"; play.href = reel;
-      play.target = "_blank"; play.rel = "noopener"; play.setAttribute("aria-label", "Assistir: " + title);
-      play.innerHTML = "<b>▶</b>";
-      play.addEventListener("click", e => {
-        e.preventDefault();
-        slot.innerHTML = '<iframe src="' + reel + 'embed/" title="' + title + '" allow="encrypted-media; picture-in-picture" allowfullscreen loading="lazy"></iframe>';
-      });
-      slot.append(play);
-      return;
-    }
-    const thumb = document.createElement("img");
-    thumb.src = "https://i.ytimg.com/vi/" + id + "/hqdefault.jpg";
-    thumb.alt = title; thumb.loading = "lazy";
-    const play = document.createElement("a");
-    play.className = "play"; play.href = "https://www.youtube.com/watch?v=" + id;
-    play.target = "_blank"; play.rel = "noopener"; play.setAttribute("aria-label", "Assistir: " + title);
-    play.innerHTML = "<b>▶</b>";
-    play.addEventListener("click", e => {
-      e.preventDefault();
-      slot.innerHTML = '<iframe src="https://www.youtube.com/embed/' + id + params + '" title="' + title + '" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>';
-    });
-    slot.append(thumb, play);
-  });
-
   // Player local estilizado: botão play temático; controles nativos só durante a reprodução
   // Ao dar play em um, pausa qualquer outro que esteja tocando
   const locais = [...document.querySelectorAll(".video-frame video")];
@@ -139,7 +99,11 @@ document.addEventListener("DOMContentLoaded", () => {
     });
     const showBtn = () => { btn.hidden = false; video.removeAttribute("controls"); };
     video.addEventListener("pause", showBtn);
-    video.addEventListener("ended", showBtn);
+    video.addEventListener("ended", () => {
+      // No lightbox, mantém controles para rever; na grade, volta o botão temático
+      if (video.closest(".lb-stage")) { video.setAttribute("controls", ""); }
+      else { showBtn(); }
+    });
     frame.append(btn);
   });
 
