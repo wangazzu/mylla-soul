@@ -98,8 +98,9 @@ document.addEventListener("DOMContentLoaded", () => {
       btn.hidden = true; video.setAttribute("controls", "");
     });
     const showBtn = () => {
-      // No palco com vídeo encerrado, mantém controles (replay) independente da ordem pause/ended
-      if (video.closest(".lb-stage") && video.ended) { video.setAttribute("controls", ""); return; }
+      // No palco, controles sempre visíveis (pausa ou fim) para retomar/rever;
+      // na grade, volta o botão temático
+      if (video.closest(".lb-stage")) { video.setAttribute("controls", ""); return; }
       btn.hidden = false; video.removeAttribute("controls");
     };
     video.addEventListener("pause", showBtn);
@@ -111,7 +112,12 @@ document.addEventListener("DOMContentLoaded", () => {
   const lightbox = document.getElementById("lightbox");
   const stage = lightbox ? lightbox.querySelector(".lb-stage") : null;
   const lbClose = lightbox ? lightbox.querySelector(".lb-close") : null;
+  const lbCount = lightbox ? lightbox.querySelector(".lb-count") : null;
   let lastFocus = null;
+  function lbPos(video) {
+    const i = locais.indexOf(video);
+    if (lbCount) lbCount.textContent = locais.length > 1 ? ((i + 1) + " / " + locais.length) : "";
+  }
   function openLightbox(frame, video, btn) {
     if (!lightbox || !stage) { video.play(); return; }
     lastFocus = document.activeElement;
@@ -119,6 +125,7 @@ document.addEventListener("DOMContentLoaded", () => {
     stage.append(video);
     lightbox.hidden = false;
     document.body.style.overflow = "hidden";
+    lbPos(video);
     video.play();
     if (lbClose) lbClose.focus();
   }
@@ -140,7 +147,28 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   if (lbClose) lbClose.addEventListener("click", closeLightbox);
   if (lightbox) lightbox.addEventListener("click", e => { if (e.target === lightbox) closeLightbox(); });
-  document.addEventListener("keydown", e => { if (e.key === "Escape") closeLightbox(); });
+  function navLightbox(d) {
+    if (!lightbox || lightbox.hidden || !stage || locais.length < 2) return;
+    const cur = stage.querySelector("video");
+    if (!cur) return;
+    cur.pause();
+    const frame = cur._frame, btn = cur._btn;
+    if (frame && btn) { frame.insertBefore(cur, btn); btn.hidden = false; }
+    cur.removeAttribute("controls");
+    const v = locais[(locais.indexOf(cur) + d + locais.length) % locais.length];
+    const f = v._frame || v.closest(".video-frame");
+    const b = v._btn || (f && f.querySelector(".video-start"));
+    openLightbox(f, v, b);
+  }
+  const lbPrev = lightbox ? lightbox.querySelector(".lb-prev") : null;
+  const lbNext = lightbox ? lightbox.querySelector(".lb-next") : null;
+  if (lbPrev) lbPrev.addEventListener("click", () => navLightbox(-1));
+  if (lbNext) lbNext.addEventListener("click", () => navLightbox(1));
+  document.addEventListener("keydown", e => {
+    if (e.key === "Escape") closeLightbox();
+    if (lightbox && !lightbox.hidden && e.key === "ArrowLeft") navLightbox(-1);
+    if (lightbox && !lightbox.hidden && e.key === "ArrowRight") navLightbox(1);
+  });
 
   // Fallback de imagem quebrada (estado de erro)
   document.querySelectorAll("img").forEach(img => {

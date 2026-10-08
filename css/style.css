@@ -133,6 +133,10 @@ section .card,section form,section details{text-align:left}
 .lightbox[hidden]{display:none}
 .lb-box{position:relative;width:min(420px,100%);background:#1e1000;border-radius:20px;padding:14px;box-shadow:0 20px 60px rgba(0,0,0,.5);border-bottom:6px solid var(--amarelo)}
 .lb-close{position:absolute;top:-16px;right:-10px;width:44px;height:44px;border-radius:50%;border:3px dashed #fff;background:var(--coral);color:#fff;font-size:1.2rem;font-weight:900;cursor:pointer;box-shadow:0 4px 0 rgba(0,0,0,.3)}
+.lb-prev,.lb-next{position:absolute;top:50%;transform:translateY(-50%);width:44px;height:44px;border-radius:50%;border:3px dashed #fff;background:var(--noite);color:#fff;font-size:1.5rem;font-weight:900;line-height:1;cursor:pointer;box-shadow:0 4px 0 rgba(0,0,0,.3);z-index:2}
+.lb-prev{left:-14px}
+.lb-next{right:-14px}
+.lb-count{display:block;text-align:center;color:#FFE66D;font-family:var(--font-titulo);font-weight:800;font-size:.9rem;margin-top:10px}
 .lb-stage video{width:100%;max-height:76vh;aspect-ratio:9/16;object-fit:contain;border-radius:12px;display:block;background:#000}
 .foto-grid{grid-template-columns:repeat(2,1fr)}
 .foto-box{aspect-ratio:3/4;border-radius:16px;overflow:hidden;background:#ffe1a8;box-shadow:var(--shadow)}
