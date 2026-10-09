@@ -7,7 +7,7 @@ Ao criar um componente novo, adicione-o nas duas.
 
 | Token | Hex | Uso |
 |---|---|---|
-| `--roxo` | `#5B3DF5` | Selos, destaques, foco, selecionado |
+| `--roxo` | `#5B3DF5` | Destaques, foco, selecionado |
 | `--roxo-esc` | `#3F27B8` | Sombra dura do roxo |
 | `--noite` | `#2A2356` | Footer, selo-ícone, fundo lightbox |
 | `--tinta` | `#2B2350` | Texto principal |
@@ -21,7 +21,7 @@ Ao criar um componente novo, adicione-o nas duas.
 | `--amarelo-bg` | `#FFF3D6` | Card pastel |
 | `--creme` | `#FFFBF3` | Fundo do site |
 
-Regra: fundo creme/branco + tinta; roxo para selos e destaques; pastéis só em cards; gradiente amarelo→laranja só em CTAs solares.
+Regra: fundo creme/branco + tinta; rosa para selos, roxo para destaques e foco; pastéis só em cards; gradiente amarelo→laranja só em CTAs solares.
 
 ## 2. Tipografia
 
