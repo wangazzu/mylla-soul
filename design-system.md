@@ -45,7 +45,7 @@ Pill + sombra dura 4px (afunda no `:active`). Só um primário (`btn-wa`/`btn-so
 ```html
 <span class="badge">Serviços</span>
 <span class="badge badge-sol">Agenda aberta</span>
-<span class="badge badge-azul">Cantora</span>
+<span class="badge badge-rosa">Cantora</span>
 
 <div class="card p-lilas"><!-- p-rosa / p-verde / p-amarelo -->
   <div class="emoji">🎤</div>
