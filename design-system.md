@@ -21,7 +21,7 @@ Ao criar um componente novo, adicione-o nas duas.
 | `--amarelo-bg` | `#FFF3D6` | Card pastel |
 | `--creme` | `#FFFBF3` | Fundo do site |
 
-Regra: fundo creme/branco + tinta; rosa para selos, roxo para destaques e foco; pastéis só em cards; gradiente amarelo→laranja só em CTAs solares.
+Regra: fundo creme/branco + tinta; rosa para selos (exceto o selo Cantora, temporariamente verde para teste), roxo para destaques e foco; pastéis só em cards; gradiente amarelo→laranja só em CTAs solares.
 
 ## 2. Tipografia
 
@@ -45,7 +45,7 @@ Pill + sombra dura 4px (afunda no `:active`). Só um primário (`btn-wa`/`btn-so
 ```html
 <span class="badge">Serviços</span>
 <span class="badge badge-sol">Agenda aberta</span>
-<span class="badge badge-rosa">Cantora</span>
+<span class="badge badge-verde">Cantora</span>
 
 <div class="card p-lilas"><!-- p-rosa / p-verde / p-amarelo -->
   <div class="emoji">🎤</div>
